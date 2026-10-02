@@ -1,2 +1,2 @@
-# Gestor-Contrasenas
+# JaVault
 Repositorio sin descripción.
