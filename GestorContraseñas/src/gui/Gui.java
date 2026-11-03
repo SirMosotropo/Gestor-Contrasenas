@@ -29,10 +29,8 @@ public class Gui extends JFrame {
 		JPanel panelMenu = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JButton btnVerBoveda = new JButton("Ver Bóveda / Usuarios");
 		JButton btnGenerador = new JButton("Generador");
-		JButton btnAjustes = new JButton("Ajustes");
 		panelMenu.add(btnVerBoveda);
 		panelMenu.add(btnGenerador);
-		panelMenu.add(btnAjustes);
 		panelTop.add(panelMenu, BorderLayout.EAST);
 
 		add(panelTop, BorderLayout.NORTH);
