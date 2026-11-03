@@ -3,25 +3,22 @@
 import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-<<<<<<< Updated upstream
 
-=======
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
->>>>>>> Stashed changes
 import java.awt.*;
 import javax.swing.*;
 
-<<<<<<< Updated upstream
+
 
 	
 public class Gui extends JFrame implements ListSelectionListener{
-=======
-public class Gui extends JFrame{
+
 	private JList<TipoContrasena> listaTipoContrasena;
 	private JSlider gestorDificultad;
 	private JLabel ejemploContrasena;
->>>>>>> Stashed changes
+
 	public Gui() {
 		setTitle("Javault - Gestor de Contraseñas");
 		setSize(800,600);
@@ -148,6 +145,5 @@ public class Gui extends JFrame{
             ejemploContrasena.setText(tipo.generar(gestorDificultad.getValue()));
         }
     }
->>>>>>> Stashed changes
 }
 
