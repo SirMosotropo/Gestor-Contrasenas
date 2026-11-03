@@ -43,6 +43,7 @@ public class Gui extends JFrame {
 		
 		
 		JScrollPane scrollLista = new JScrollPane(listaTipoContrasena);
+		scrollLista.setPreferredSize(new Dimension(100,80));
 		
 		JPanel panelLeft = new JPanel();
 		add(panelLeft,BorderLayout.WEST);
