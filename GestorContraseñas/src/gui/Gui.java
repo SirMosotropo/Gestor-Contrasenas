@@ -42,7 +42,7 @@ public class Gui extends JFrame {
 		listaTipoContrasena.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listaTipoContrasena.setSelectedIndex(0);
 		JScrollPane scrollLista = new JScrollPane(listaTipoContrasena);
-
+		scrollLista.setPreferredSize(new Dimension(120, 80));
 		JPanel panelLeft = new JPanel();
 		add(panelLeft, BorderLayout.WEST);
 		panelLeft.add(scrollLista);
