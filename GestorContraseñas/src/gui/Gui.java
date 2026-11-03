@@ -40,7 +40,7 @@ public class Gui extends JFrame {
 		listaTipoContrasena.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listaTipoContrasena.setSelectedIndex(0);
 		JScrollPane scrollLista = new JScrollPane(listaTipoContrasena);
-
+		scrollLista.setPreferredSize(new Dimension(120, 80));
 		JPanel panelLeft = new JPanel();
 		add(panelLeft, BorderLayout.WEST);
 		panelLeft.add(scrollLista);
@@ -50,7 +50,7 @@ public class Gui extends JFrame {
 		panelCenterContainer = new JPanel(cardLayout);
 
 		JPanel panelGenerador = new JPanel();
-		JLabel ejemploContrasena = new JLabel("Selecciona un tipo de lista");
+		JLabel ejemploContrasena = new JLabel("Ejemplo de la contraseña seleccionada");
 		ejemploContrasena.setOpaque(true);
 		ejemploContrasena.setBackground(new Color(245, 245, 245)); // Blanco
 		ejemploContrasena.setForeground(new Color(40, 40, 40));    // Texto - Gris
