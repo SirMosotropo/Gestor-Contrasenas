@@ -14,23 +14,25 @@ public class Gui extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);		
 		
-		JLabel titulo = new JLabel("Javault");
-		Font fuente = new Font("Calibri",2,40);
+		JPanel panelTop = new JPanel(new BorderLayout());
+		panelTop.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
+		
+		// Título a la izquierda (WEST)
+		JLabel titulo = new JLabel("JaVault");
+		Font fuente = new Font("Calibri", Font.ITALIC | Font.BOLD, 40);
 		titulo.setFont(fuente);
-		
-		
-		JPanel panelTop = new JPanel();
-		add(panelTop, BorderLayout.NORTH);
-		panelTop.add(titulo);
+		panelTop.add(titulo, BorderLayout.WEST);
 		
 		
 		JPanel panelMenu = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JButton btnVerBoveda = new JButton("Ver Bóveda / Usuarios");
 		JButton btnGenerador = new JButton("Generador");
+		JButton btnAjustes = new JButton ("Ajustes");
 		panelMenu.add(btnVerBoveda);
 		panelMenu.add(btnGenerador);
+		panelMenu.add(btnAjustes);
 		panelTop.add(panelMenu, BorderLayout.EAST);
-		add(panelTop, BorderLayout.EAST);
+		add(panelTop, BorderLayout.NORTH);
 		
 		
 		JList listaTipoContrasena = new JList<TipoContrasena>(TipoContrasena.values());
