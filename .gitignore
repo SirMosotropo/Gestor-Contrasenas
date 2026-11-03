@@ -1,1 +1,15 @@
-/.metadata/
+
+.metadata/
+.recommenders/
+
+# Archivos de compilacion de Java (Binarios)
+bin/
+*.class
+
+# Archivos temporales y registros
+*.log
+.tmp/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
