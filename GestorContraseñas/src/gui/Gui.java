@@ -7,6 +7,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Gui extends JFrame{
+	
 	public Gui() {
 		setTitle("Javault - Gestor de Contraseñas");
 		setSize(800,600);
@@ -66,13 +67,6 @@ public class Gui extends JFrame{
 		panelBottom.add(gestorDificultad);
 		panelBottom.add(textoSlider);
 		
-		
-		
-		
 	};
-	
-	public static void main(String[] args) {
-		Gui ventana = new Gui();
-		ventana.setVisible(true);
-	}
 }
+
