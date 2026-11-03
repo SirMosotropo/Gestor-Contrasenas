@@ -9,7 +9,7 @@ import javax.swing.*;
 
 
 	
-public class Gui extends JFrame implements ListSelectionListener{
+public class Gui extends JFrame {
 	public Gui() {
 		setTitle("Javault - Gestor de Contraseñas");
 		setSize(800,600);
@@ -41,21 +41,6 @@ public class Gui extends JFrame implements ListSelectionListener{
 		listaTipoContrasena.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listaTipoContrasena.setSelectedIndex(0);
 		
-		/*
-		listaTipoContrasena.addListSelectionListener(new ListSelectionListener() {
-			
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				// TODO Auto-generated method stub
-				if (!e.getValueIsAdjusting()) {
-					TipoContrasena tipoSeleccionado = (TipoContrasena) listaTipoContrasena.getSelectedValue();
-					if (tipoSeleccionado!=null) {
-					}
-				}
-			}
-		});
-		
-		*/
 		
 		JScrollPane scrollLista = new JScrollPane(listaTipoContrasena);
 		
@@ -89,10 +74,6 @@ public class Gui extends JFrame implements ListSelectionListener{
 		panelBottom.add(textoSlider);
 }
 
-	@Override
-	public void valueChanged(ListSelectionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
 
