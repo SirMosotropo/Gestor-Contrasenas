@@ -14,8 +14,7 @@ public class Gui extends JFrame implements ListSelectionListener{
 		setTitle("Javault - Gestor de Contraseñas");
 		setSize(800,600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
+		setLocationRelativeTo(null);		
 		
 		JLabel titulo = new JLabel("Javault");
 		Font fuente = new Font("Calibri",2,40);
@@ -25,6 +24,15 @@ public class Gui extends JFrame implements ListSelectionListener{
 		JPanel panelTop = new JPanel();
 		add(panelTop, BorderLayout.NORTH);
 		panelTop.add(titulo);
+		
+		
+		JPanel panelMenu = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JButton btnVerBoveda = new JButton("Ver Bóveda / Usuarios");
+		JButton btnGenerador = new JButton("Generador");
+		panelMenu.add(btnVerBoveda);
+		panelMenu.add(btnGenerador);
+		panelTop.add(panelMenu, BorderLayout.EAST);
+		add(panelTop, BorderLayout.EAST);
 		
 		
 		JList listaTipoContrasena = new JList<TipoContrasena>(TipoContrasena.values());
