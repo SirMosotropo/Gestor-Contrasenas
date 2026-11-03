@@ -5,23 +5,6 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-<<<<<<< Updated upstream
-
-
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.*;
-import javax.swing.*;
-
-
-
-	
-public class Gui extends JFrame implements ListSelectionListener{
-
-	private JList<TipoContrasena> listaTipoContrasena;
-	private JSlider gestorDificultad;
-	private JLabel ejemploContrasena;
-=======
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import javax.swing.*;
@@ -32,7 +15,6 @@ public class Gui extends JFrame {
 	private JPanel panelCenterContainer;
 
 
->>>>>>> Stashed changes
 
 	public Gui() {
 		setTitle("Javault - Gestor de Contraseñas");
@@ -64,57 +46,16 @@ public class Gui extends JFrame {
 		add(panelTop, BorderLayout.NORTH);
 
 		
-<<<<<<< Updated upstream
-		
-<<<<<<< Updated upstream
-		JList listaTipoContrasena = new JList<TipoContrasena>(TipoContrasena.values());
-		listaTipoContrasena.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listaTipoContrasena.setSelectedIndex(0);
-		
-		/*
-		listaTipoContrasena.addListSelectionListener(new ListSelectionListener() {
-			
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				// TODO Auto-generated method stub
-				if (!e.getValueIsAdjusting()) {
-					TipoContrasena tipoSeleccionado = (TipoContrasena) listaTipoContrasena.getSelectedValue();
-					if (tipoSeleccionado!=null) {
-					}
-				}
-			}
-		});
-		
-		*/
-		
-=======
 
 		JList<TipoContrasena> listaTipoContrasena = new JList<TipoContrasena>(TipoContrasena.values());
 		listaTipoContrasena.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listaTipoContrasena.setSelectedIndex(0);
->>>>>>> Stashed changes
 		JScrollPane scrollLista = new JScrollPane(listaTipoContrasena);
 
 
 		JPanel panelLeft = new JPanel();
 		add(panelLeft, BorderLayout.WEST);
 		panelLeft.add(scrollLista);
-<<<<<<< Updated upstream
-=======
-		listaTipoContrasena = new JList<TipoContrasena>(TipoContrasena.values());
-        listaTipoContrasena.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        listaTipoContrasena.setSelectedIndex(0);
-        JScrollPane scrollLista = new JScrollPane(listaTipoContrasena);
-
-        JPanel panelLeft = new JPanel();
-        add(panelLeft, BorderLayout.WEST);
-        panelLeft.add(scrollLista);
->>>>>>> Stashed changes
-		
-		
-		
-		ejemploContrasena = new JLabel("Selecciona un tipo de lista");
-=======
 
 
 		cardLayout = new CardLayout();
@@ -124,7 +65,6 @@ public class Gui extends JFrame {
 
 		JPanel panelGenerador = new JPanel();
 		JLabel ejemploContrasena = new JLabel("Selecciona un tipo de lista");
->>>>>>> Stashed changes
 		ejemploContrasena.setOpaque(true);
 		ejemploContrasena.setBackground(new Color(245, 245, 245)); // Blanco
 		ejemploContrasena.setForeground(new Color(40, 40, 40));    // Texto - Gris
@@ -158,57 +98,13 @@ public class Gui extends JFrame {
 		add(panelCenterContainer, BorderLayout.CENTER);
 
 		
-<<<<<<< Updated upstream
-		gestorDificultad = new JSlider();
-=======
 
 		JSlider gestorDificultad = new JSlider();
->>>>>>> Stashed changes
 		JLabel textoSlider = new JLabel("Nivel de seguridad");
 		JPanel panelBottom = new JPanel();
 		add(panelBottom, BorderLayout.SOUTH);
 		panelBottom.add(gestorDificultad);
 		panelBottom.add(textoSlider);
-<<<<<<< Updated upstream
-}
-
-	@Override
-	public void valueChanged(ListSelectionEvent e) {
-		// TODO Auto-generated method stub
-		
-<<<<<<< Updated upstream
-	}
-=======
-		gestorDificultad.setMinimum(4);
-        gestorDificultad.setMaximum(32);
-        gestorDificultad.setValue(12);
-
-        listaTipoContrasena.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    actualizarEjemplo();
-                }
-            }
-        });
-        gestorDificultad.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                actualizarEjemplo();
-            }
-        });
-		
-        
-        actualizarEjemplo();
-    }
-
-    private void actualizarEjemplo() {
-        TipoContrasena tipo = listaTipoContrasena.getSelectedValue();
-        if (tipo != null) {
-            ejemploContrasena.setText(tipo.generar(gestorDificultad.getValue()));
-        }
-    }
-=======
 
 
 
@@ -227,6 +123,5 @@ public class Gui extends JFrame {
 
 
 
->>>>>>> Stashed changes
 }
 
