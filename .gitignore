@@ -1,1 +1,15 @@
-/.metadata/
+# Archivos de la carpeta .metadata de Eclipse (¡Lo que aparece en tu imagen!)
+.metadata/
+.recommenders/
+
+# Archivos de compilación de Java (Binarios)
+bin/
+*.class
+
+# Archivos temporales y registros
+*.log
+.tmp/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
