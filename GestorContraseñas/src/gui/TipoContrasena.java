@@ -1,5 +1,5 @@
 package gui;
 
 public enum TipoContrasena {
-	Numerica,Mixta,Personalizada
+	Numeros,Letras,LETRAS,Caracteres
 }
