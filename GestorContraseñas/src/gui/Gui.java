@@ -1,8 +1,11 @@
-	package gui;
+package gui;
+
+
 
 import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+<<<<<<< Updated upstream
 
 
 import javax.swing.event.ChangeEvent;
@@ -18,33 +21,50 @@ public class Gui extends JFrame implements ListSelectionListener{
 	private JList<TipoContrasena> listaTipoContrasena;
 	private JSlider gestorDificultad;
 	private JLabel ejemploContrasena;
+=======
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import javax.swing.*;
+
+public class Gui extends JFrame {
+
+	private CardLayout cardLayout;
+	private JPanel panelCenterContainer;
+
+
+>>>>>>> Stashed changes
 
 	public Gui() {
 		setTitle("Javault - Gestor de Contraseñas");
-		setSize(800,600);
+		setSize(850, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);		
-		
-		JPanel panelTop = new JPanel(new BorderLayout());
-		panelTop.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
-		
-		// Título a la izquierda (WEST)
-		JLabel titulo = new JLabel("JaVault");
-		Font fuente = new Font("Calibri", Font.ITALIC | Font.BOLD, 40);
+
+
+
+		JLabel titulo = new JLabel("Javault");
+		Font fuente = new Font("Calibri", Font.ITALIC, 40);
 		titulo.setFont(fuente);
+
+
+
+		JPanel panelTop = new JPanel(new BorderLayout());
 		panelTop.add(titulo, BorderLayout.WEST);
-		
-		
+
+
+
 		JPanel panelMenu = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JButton btnVerBoveda = new JButton("Ver Bóveda / Usuarios");
 		JButton btnGenerador = new JButton("Generador");
-		JButton btnAjustes = new JButton ("Ajustes");
 		panelMenu.add(btnVerBoveda);
 		panelMenu.add(btnGenerador);
-		panelMenu.add(btnAjustes);
 		panelTop.add(panelMenu, BorderLayout.EAST);
+
+
 		add(panelTop, BorderLayout.NORTH);
+
 		
+<<<<<<< Updated upstream
 		
 <<<<<<< Updated upstream
 		JList listaTipoContrasena = new JList<TipoContrasena>(TipoContrasena.values());
@@ -67,11 +87,19 @@ public class Gui extends JFrame implements ListSelectionListener{
 		
 		*/
 		
+=======
+
+		JList<TipoContrasena> listaTipoContrasena = new JList<TipoContrasena>(TipoContrasena.values());
+		listaTipoContrasena.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listaTipoContrasena.setSelectedIndex(0);
+>>>>>>> Stashed changes
 		JScrollPane scrollLista = new JScrollPane(listaTipoContrasena);
-		
+
+
 		JPanel panelLeft = new JPanel();
-		add(panelLeft,BorderLayout.WEST);
+		add(panelLeft, BorderLayout.WEST);
 		panelLeft.add(scrollLista);
+<<<<<<< Updated upstream
 =======
 		listaTipoContrasena = new JList<TipoContrasena>(TipoContrasena.values());
         listaTipoContrasena.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -86,27 +114,62 @@ public class Gui extends JFrame implements ListSelectionListener{
 		
 		
 		ejemploContrasena = new JLabel("Selecciona un tipo de lista");
+=======
+
+
+		cardLayout = new CardLayout();
+		panelCenterContainer = new JPanel(cardLayout);
+
+
+
+		JPanel panelGenerador = new JPanel();
+		JLabel ejemploContrasena = new JLabel("Selecciona un tipo de lista");
+>>>>>>> Stashed changes
 		ejemploContrasena.setOpaque(true);
-		ejemploContrasena.setBackground(new Color(245,245,245)); // Blanco
-		ejemploContrasena.setForeground(new Color(40,40,40));	// Texto - Gris
+		ejemploContrasena.setBackground(new Color(245, 245, 245)); // Blanco
+		ejemploContrasena.setForeground(new Color(40, 40, 40));    // Texto - Gris
 		ejemploContrasena.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(180, 180, 180), 2),
-                BorderFactory.createEmptyBorder(15, 15, 15, 15)
-        ));
+				BorderFactory.createLineBorder(new Color(180, 180, 180), 2),
+				BorderFactory.createEmptyBorder(15, 15, 15, 15)
+
+				));
+
+		panelGenerador.add(ejemploContrasena);
+
+
+		JPanel panelBoveda = new JPanel(new BorderLayout());
+		String[] columnas = {"Servicio / Sitio", "Usuario / Email", "Contraseña"};
+		Object[][] datosEjemplo = {
+				{"Google", "usuario@gmail.com", "••••••••"},
+				{"GitHub", "dev_user", "••••••••"},
+				{"Universidad", "estudiante@edu.es", "••••••••"}
+
+		};
+
+		DefaultTableModel modeloTabla = new DefaultTableModel(datosEjemplo, columnas);
+		JTable tablaBoveda = new JTable(modeloTabla);
+		JScrollPane scrollTabla = new JScrollPane(tablaBoveda);
+		panelBoveda.add(scrollTabla, BorderLayout.CENTER);
+
+
+		panelCenterContainer.add(panelGenerador, "MENU_GENERADOR");
+		panelCenterContainer.add(panelBoveda, "MENU_BOVEDA");
+
+		add(panelCenterContainer, BorderLayout.CENTER);
+
 		
-		
-		JPanel panelCenter = new JPanel();
-		add(panelCenter,BorderLayout.CENTER);
-		panelCenter.add(ejemploContrasena);
-		
-		
-		
+<<<<<<< Updated upstream
 		gestorDificultad = new JSlider();
+=======
+
+		JSlider gestorDificultad = new JSlider();
+>>>>>>> Stashed changes
 		JLabel textoSlider = new JLabel("Nivel de seguridad");
 		JPanel panelBottom = new JPanel();
 		add(panelBottom, BorderLayout.SOUTH);
 		panelBottom.add(gestorDificultad);
 		panelBottom.add(textoSlider);
+<<<<<<< Updated upstream
 }
 
 	@Override
@@ -145,5 +208,25 @@ public class Gui extends JFrame implements ListSelectionListener{
             ejemploContrasena.setText(tipo.generar(gestorDificultad.getValue()));
         }
     }
+=======
+
+
+
+		btnGenerador.addActionListener(e -> {
+			cardLayout.show(panelCenterContainer, "MENU_GENERADOR");
+
+		});
+
+
+		btnVerBoveda.addActionListener(e -> {
+			cardLayout.show(panelCenterContainer, "MENU_BOVEDA");
+
+		});
+
+	}
+
+
+
+>>>>>>> Stashed changes
 }
 
