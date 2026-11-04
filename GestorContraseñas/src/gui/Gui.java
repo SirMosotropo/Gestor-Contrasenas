@@ -61,18 +61,6 @@ public class Gui extends JFrame {
 		add(panelTop, BorderLayout.NORTH);
 
 		// JList con un JScrollPanel
-		JList<TipoContrasena> listaTipoContrasena = new JList<TipoContrasena>(TipoContrasena.values());
-		listaTipoContrasena.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listaTipoContrasena.setSelectedIndex(0); // Opción por defecto sea 0
-		JScrollPane scrollLista = new JScrollPane(listaTipoContrasena);
-		scrollLista.setPreferredSize(new Dimension(200, 140));
-
-
-		JPanel panelLeft = new JPanel(new BorderLayout());
-		panelLeft.setBorder(BorderFactory.createTitledBorder("Filtros / Tipos"));
-		panelLeft.add(scrollLista, BorderLayout.CENTER);
-		add(panelLeft, BorderLayout.WEST);
-
 
 		cardLayout = new CardLayout();
 		panelCenterContainer = new JPanel(cardLayout);
@@ -82,7 +70,7 @@ public class Gui extends JFrame {
 		JPanel panelGenerador = new JPanel(new BorderLayout(10, 10));
 		panelGenerador.setBorder(BorderFactory.createTitledBorder("Crear Nueva Contraseña"));
 
-		// Concepto PPTX: Disposición en rejilla uniforme con GridLayout
+		// Disposición en rejilla uniforme con GridLayout
 		JPanel panelFormulario = new JPanel(new GridLayout(6, 2, 10, 10));
 
 		panelFormulario.add(new JLabel("Sitio Web / Servicio:"));
@@ -94,12 +82,12 @@ public class Gui extends JFrame {
 		panelFormulario.add(txtUsuario);
 
 		panelFormulario.add(new JLabel("Longitud de Contraseña:"));
-		// Concepto PPTX: Control JSpinner utilizando SpinnerNumberModel
+		// Control JSpinner utilizando SpinnerNumberModel
 		JSpinner spinnerLongitud = new JSpinner(new SpinnerNumberModel(12, 6, 32, 1));
 		panelFormulario.add(spinnerLongitud);
 
 		panelFormulario.add(new JLabel("Opciones de Caracteres:"));
-		// Concepto PPTX: Controles de opción múltiple JCheckBox
+		// Controles de opción múltiple JCheckBox
 		JPanel panelCheckboxes = new JPanel();
 		JCheckBox chkMayus = new JCheckBox("Mayúsculas", true);
 		JCheckBox chkNumeros = new JCheckBox("Números", true);
@@ -110,12 +98,12 @@ public class Gui extends JFrame {
 		panelFormulario.add(panelCheckboxes);
 
 		panelFormulario.add(new JLabel("Contraseña Generada:"));
-		// Concepto PPTX: Campo de texto con ocultación de contraseña JPasswordField
+		// Campo de texto con ocultación de contraseña JPasswordField
 		JPasswordField txtPasswordGenerada = new JPasswordField("P@ssw0rd2026!");
 		panelFormulario.add(txtPasswordGenerada);
 
 		panelFormulario.add(new JLabel("Nivel de Seguridad:"));
-		// Concepto PPTX: Barra de progreso JProgressBar
+		// Barra de progreso JProgressBar
 		JProgressBar barraSeguridad = new JProgressBar(0, 100);
 		barraSeguridad.setValue(85);
 		barraSeguridad.setStringPainted(true);
@@ -138,7 +126,7 @@ public class Gui extends JFrame {
 		// --- NUEVO: Barra superior de la bóveda (Buscador y Añadir) ---
 		JPanel panelAccionesBovedaTop = new JPanel(new BorderLayout(5, 0));
 		JTextField txtBuscar = new JTextField(" Buscar en la bóveda...");
-		JButton btnNuevo = new JButton("+ Nueva Entrada");
+		JButton btnNuevo = new JButton("Buscar");
 		panelAccionesBovedaTop.add(txtBuscar, BorderLayout.CENTER);
 		panelAccionesBovedaTop.add(btnNuevo, BorderLayout.EAST);
 		panelBoveda.add(panelAccionesBovedaTop, BorderLayout.NORTH);
@@ -186,22 +174,20 @@ public class Gui extends JFrame {
 		add(panelBottom, BorderLayout.SOUTH);
 
 		// Programación de eventos de interfaz mediante lambdas
-		btnGenerador.addActionListener(e -> activarVistaGenerador(panelLeft, panelBottom));
-		itemGenerador.addActionListener(e -> activarVistaGenerador(panelLeft, panelBottom));
+		btnGenerador.addActionListener(e -> activarVistaGenerador(panelBottom));
+		itemGenerador.addActionListener(e -> activarVistaGenerador(panelBottom));
 
-		btnVerBoveda.addActionListener(e -> activarVistaBoveda(panelLeft, panelBottom));
-		itemBoveda.addActionListener(e -> activarVistaBoveda(panelLeft, panelBottom));
+		btnVerBoveda.addActionListener(e -> activarVistaBoveda(panelBottom));
+		itemBoveda.addActionListener(e -> activarVistaBoveda(panelBottom));
 	}
 
-	private void activarVistaGenerador(JPanel panelLeft, JPanel panelBottom) {
+	private void activarVistaGenerador(JPanel panelBottom) {
 		cardLayout.show(panelCenterContainer, "MENU_GENERADOR");
-		panelLeft.setVisible(true); // Concepto PPTX: Cambiar estado de visibilidad mediante setVisible
 		panelBottom.setVisible(true);
 	}
 
-	private void activarVistaBoveda(JPanel panelLeft, JPanel panelBottom) {
+	private void activarVistaBoveda(JPanel panelBottom) {
 		cardLayout.show(panelCenterContainer, "MENU_BOVEDA");
-		panelLeft.setVisible(false);
 		panelBottom.setVisible(false);
 	}
 
