@@ -82,11 +82,11 @@ public class Gui extends JFrame {
 		JPanel panelGenerador = new JPanel(new BorderLayout(10, 10));
 		panelGenerador.setBorder(BorderFactory.createTitledBorder("Crear Nueva Contraseña"));
 
-		// Concepto PPTX: Disposición en rejilla uniforme con GridLayout[cite: 1]
+		// Concepto PPTX: Disposición en rejilla uniforme con GridLayout
 		JPanel panelFormulario = new JPanel(new GridLayout(6, 2, 10, 10));
 
 		panelFormulario.add(new JLabel("Sitio Web / Servicio:"));
-		JTextField txtSitio = new JTextField("https://ejemplo.com"); // Concepto PPTX: JTextField[cite: 1]
+		JTextField txtSitio = new JTextField("https://ejemplo.com"); // Concepto PPTX: JTextField
 		panelFormulario.add(txtSitio);
 
 		panelFormulario.add(new JLabel("Usuario / Email:"));
@@ -94,12 +94,12 @@ public class Gui extends JFrame {
 		panelFormulario.add(txtUsuario);
 
 		panelFormulario.add(new JLabel("Longitud de Contraseña:"));
-		// Concepto PPTX: Control JSpinner utilizando SpinnerNumberModel[cite: 1]
+		// Concepto PPTX: Control JSpinner utilizando SpinnerNumberModel
 		JSpinner spinnerLongitud = new JSpinner(new SpinnerNumberModel(12, 6, 32, 1));
 		panelFormulario.add(spinnerLongitud);
 
 		panelFormulario.add(new JLabel("Opciones de Caracteres:"));
-		// Concepto PPTX: Controles de opción múltiple JCheckBox[cite: 1]
+		// Concepto PPTX: Controles de opción múltiple JCheckBox
 		JPanel panelCheckboxes = new JPanel();
 		JCheckBox chkMayus = new JCheckBox("Mayúsculas", true);
 		JCheckBox chkNumeros = new JCheckBox("Números", true);
@@ -110,12 +110,12 @@ public class Gui extends JFrame {
 		panelFormulario.add(panelCheckboxes);
 
 		panelFormulario.add(new JLabel("Contraseña Generada:"));
-		// Concepto PPTX: Campo de texto con ocultación de contraseña JPasswordField[cite: 1]
+		// Concepto PPTX: Campo de texto con ocultación de contraseña JPasswordField
 		JPasswordField txtPasswordGenerada = new JPasswordField("P@ssw0rd2026!");
 		panelFormulario.add(txtPasswordGenerada);
 
 		panelFormulario.add(new JLabel("Nivel de Seguridad:"));
-		// Concepto PPTX: Barra de progreso JProgressBar[cite: 1]
+		// Concepto PPTX: Barra de progreso JProgressBar
 		JProgressBar barraSeguridad = new JProgressBar(0, 100);
 		barraSeguridad.setValue(85);
 		barraSeguridad.setStringPainted(true);
@@ -129,10 +129,21 @@ public class Gui extends JFrame {
 		panelGenerador.add(panelBotonGenerar, BorderLayout.SOUTH);
 
 
-		// Boveda de contraseñas (JPanel)
-		JPanel panelBoveda = new JPanel(new BorderLayout());
+		// ==========================================
+		// Bóveda de contraseñas (MODIFICADA CON MEJORAS)
+		// ==========================================
+		JPanel panelBoveda = new JPanel(new BorderLayout(10, 10));
 		panelBoveda.setBorder(BorderFactory.createTitledBorder("Bóveda de Contraseñas"));
 
+		// --- NUEVO: Barra superior de la bóveda (Buscador y Añadir) ---
+		JPanel panelAccionesBovedaTop = new JPanel(new BorderLayout(5, 0));
+		JTextField txtBuscar = new JTextField(" Buscar en la bóveda...");
+		JButton btnNuevo = new JButton("+ Nueva Entrada");
+		panelAccionesBovedaTop.add(txtBuscar, BorderLayout.CENTER);
+		panelAccionesBovedaTop.add(btnNuevo, BorderLayout.EAST);
+		panelBoveda.add(panelAccionesBovedaTop, BorderLayout.NORTH);
+
+		// --- TABLA ORIGINAL ---
 		String[] columnas = {"Servicio / Sitio", "Usuario / Email", "Contraseña"};
 		Object[][] datosEjemplo = {
 				{"Google", "usuario@gmail.com", "••••••••"},
@@ -145,6 +156,17 @@ public class Gui extends JFrame {
 		JTable tablaBoveda = new JTable(modeloTabla);
 		JScrollPane scrollTabla = new JScrollPane(tablaBoveda);
 		panelBoveda.add(scrollTabla, BorderLayout.CENTER);
+
+		// --- NUEVO: Barra inferior de la bóveda (Acciones sobre la fila seleccionada) ---
+		JPanel panelAccionesBovedaBottom = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JButton btnCopiarUser = new JButton("📋 Copiar Usuario");
+		JButton btnCopiarPass = new JButton("🔑 Copiar Contraseña");
+		JButton btnVerPass = new JButton("👁 Mostrar Contraseña");
+		panelAccionesBovedaBottom.add(btnCopiarUser);
+		panelAccionesBovedaBottom.add(btnCopiarPass);
+		panelAccionesBovedaBottom.add(btnVerPass);
+		panelBoveda.add(panelAccionesBovedaBottom, BorderLayout.SOUTH);
+		// ==========================================
 
 		panelCenterContainer.add(panelGenerador, "MENU_GENERADOR");
 		panelCenterContainer.add(panelBoveda, "MENU_BOVEDA");
@@ -173,7 +195,7 @@ public class Gui extends JFrame {
 
 	private void activarVistaGenerador(JPanel panelLeft, JPanel panelBottom) {
 		cardLayout.show(panelCenterContainer, "MENU_GENERADOR");
-		panelLeft.setVisible(true); // Concepto PPTX: Cambiar estado de visibilidad mediante setVisible[cite: 1]
+		panelLeft.setVisible(true); // Concepto PPTX: Cambiar estado de visibilidad mediante setVisible
 		panelBottom.setVisible(true);
 	}
 
@@ -182,7 +204,11 @@ public class Gui extends JFrame {
 		panelLeft.setVisible(false);
 		panelBottom.setVisible(false);
 	}
+
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(() -> {
+			Gui ventana = new Gui();
+			ventana.setVisible(true);
+		});
+	}
 }
-
-
-
