@@ -1,24 +1,47 @@
 package gui;
 
-import javax.swing.JFrame;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
+// Herencia de JFrame para crear la ventana principal de la aplicación
 public class Gui extends JFrame {
-
+	//Declaramos serialVersionUID para evitar el aviso de interfaz Serializable
+	private static final long serialVersionUID = 1L;
 	private CardLayout cardLayout;
 	private JPanel panelCenterContainer;
 
 	public Gui() {
+		
+		// Métodos configurables fundamentales de la ventana
 		setTitle("Javault - Gestor de Contraseñas");
 		setSize(850, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);		
 
+		// ----
 		
+		// Menú superior horizontal con opciones desplegables en cada objeto
+		JMenuBar menuBar = new JMenuBar();
+		
+		JMenu menuArchivo = new JMenu("Archivo");
+		JMenuItem itemSalir = new JMenuItem("Salir");
+		
+		// Gestion de eventos para el menu y la opcion "Salir"
+		itemSalir.addActionListener(e -> System.exit(0));
+		menuArchivo.add(itemSalir);
+		
+		JMenu menuNavegacion = new JMenu("Navegación");
+		JMenuItem itemBoveda = new JMenuItem("");
+		JMenuItem itemGenerador = new JMenuItem("");
+		menuNavegacion.add(itemBoveda);
+		menuNavegacion.add(itemGenerador);
+		
+		menuBar.add(menuArchivo);
+		menuBar.add(menuNavegacion);
+		setJMenuBar(menuBar); // Asociamos la barra del menu a la ventana
+		
+		//
 		JLabel titulo = new JLabel("Javault");
 		Font fuente = new Font("Calibri", Font.ITALIC, 40);
 		titulo.setFont(fuente);
