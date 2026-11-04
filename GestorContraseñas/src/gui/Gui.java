@@ -39,40 +39,48 @@ public class Gui extends JFrame {
 		
 		menuBar.add(menuArchivo);
 		menuBar.add(menuNavegacion);
-		setJMenuBar(menuBar); // Asociamos la barra del menu a la ventana
+		setJMenuBar(menuBar); // Asociamos la barra del menu a la ventana (IMPORTANTE: sin esto no aparece el menu horizontal superior)
 		
-		//
+		
+		//Panel superior integrado en la zona NORTH de la ventana
 		JLabel titulo = new JLabel("Javault");
 		Font fuente = new Font("Calibri", Font.ITALIC, 40);
 		titulo.setFont(fuente);
 
 		JPanel panelTop = new JPanel(new BorderLayout());
+		panelTop.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		panelTop.add(titulo, BorderLayout.WEST);
 
-		JPanel panelMenu = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JPanel panelMenuButtons = new JPanel();
 		JButton btnVerBoveda = new JButton("Ver Bóveda / Usuarios");
 		JButton btnGenerador = new JButton("Generador");
-		panelMenu.add(btnVerBoveda);
-		panelMenu.add(btnGenerador);
-		panelTop.add(panelMenu, BorderLayout.EAST);
+		panelMenuButtons.add(btnVerBoveda);
+		panelMenuButtons.add(btnGenerador);
+		panelTop.add(panelMenuButtons, BorderLayout.EAST);
 
 		add(panelTop, BorderLayout.NORTH);
 
-		
+		// JList con un JScrollPanel
 		JList<TipoContrasena> listaTipoContrasena = new JList<TipoContrasena>(TipoContrasena.values());
 		listaTipoContrasena.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listaTipoContrasena.setSelectedIndex(0);
+		listaTipoContrasena.setSelectedIndex(0); // Opción por defecto sea 0
 		JScrollPane scrollLista = new JScrollPane(listaTipoContrasena);
-		scrollLista.setPreferredSize(new Dimension(120, 80));
-		JPanel panelLeft = new JPanel();
+		scrollLista.setPreferredSize(new Dimension(200, 140));
+		
+		
+		JPanel panelLeft = new JPanel(new BorderLayout());
+		panelLeft.setBorder(BorderFactory.createTitledBorder("Filtros / Tipos"));
+		panelLeft.add(scrollLista, BorderLayout.CENTER);
 		add(panelLeft, BorderLayout.WEST);
-		panelLeft.add(scrollLista);
 
 		
 		cardLayout = new CardLayout();
 		panelCenterContainer = new JPanel(cardLayout);
 
-		JPanel panelGenerador = new JPanel();
+		
+		JPanel panelGenerador = new JPanel(new BorderLayout(10, 10));
+		panelGenerador.setBorder(BorderFactory.createTitledBorder("Crear Nueva Contraseña"));
+		
 		JLabel ejemploContrasena = new JLabel("Ejemplo de la contraseña seleccionada");
 		ejemploContrasena.setOpaque(true);
 		ejemploContrasena.setBackground(new Color(245, 245, 245)); // Blanco
